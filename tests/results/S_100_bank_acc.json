@@ -1,0 +1,638 @@
+[
+    {
+        "uri": "S_100_bank_acc.feature",
+        "id": "transferring-money-between-accounts",
+        "keyword": "Feature",
+        "name": "Transferring money between accounts",
+        "description": "    In order to manage my money more efficiently\n    As a bank client\n    I want to transfer funds between my accounts whenever I need to",
+        "line": 1,
+        "elements": [
+            {
+                "id": "transferring-money-between-accounts;transferring-money-to-a-savings-account",
+                "keyword": "Scenario",
+                "name": "Transferring money to a savings account",
+                "description": "",
+                "line": 10,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I want to manage my accounts",
+                        "line": 7,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:226"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 1000300
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "transfer money from one to another",
+                        "line": 8,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:231"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "my Current account has a balance of 1000.00",
+                        "line": 11,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:30"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "my Savings account has a balance of 2000.00",
+                        "line": 12,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:35"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 2000700
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I transfer 500.00 from my Current account to my Savings account",
+                        "line": 13,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:70"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should have 500.00 in my Current account",
+                        "line": 14,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:113"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 999800
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should have 2500.00 in my Savings account",
+                        "line": 15,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:139"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "transferring-money-between-accounts;transferring-with-insufficient-funds",
+                "keyword": "Scenario",
+                "name": "Transferring with insufficient funds",
+                "description": "",
+                "line": 17,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I want to manage my accounts",
+                        "line": 7,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:226"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "transfer money from one to another",
+                        "line": 8,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:231"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "my Current account has a balance of 1000.00",
+                        "line": 18,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:30"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "my Savings account has a balance of 2000.00",
+                        "line": 19,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:35"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I transfer 1500.00 from my Current account to my Savings account",
+                        "line": 20,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:70"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should receive an \"Insufficient funds\" error",
+                        "line": 21,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:164"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should have 1000.00 in my Current account",
+                        "line": 22,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:113"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 999300
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should have 2000.00 in my Savings account",
+                        "line": 23,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:139"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "transferring-money-between-accounts;earning-interest;;2",
+                "keyword": "Scenario Outline",
+                "name": "Earning interest",
+                "description": "",
+                "line": 31,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I want to manage my accounts",
+                        "line": 31,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:226"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "transfer money from one to another",
+                        "line": 31,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:231"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I have a saving account with a balance of 10000",
+                        "line": 31,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:35"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "the monthly interest 1 is calculated",
+                        "line": 31,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:171"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should have 11268,249 at end of year",
+                        "line": 31,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:213"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "transferring-money-between-accounts;earning-interest;;3",
+                "keyword": "Scenario Outline",
+                "name": "Earning interest",
+                "description": "",
+                "line": 32,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I want to manage my accounts",
+                        "line": 32,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:226"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "transfer money from one to another",
+                        "line": 32,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:231"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I have a saving account with a balance of 10000",
+                        "line": 32,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:35"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 1002900
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "the monthly interest 3 is calculated",
+                        "line": 32,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:171"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should have 14257,6045 at end of year",
+                        "line": 32,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:213"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "transferring-money-between-accounts;earning-interest;;4",
+                "keyword": "Scenario Outline",
+                "name": "Earning interest",
+                "description": "",
+                "line": 33,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I want to manage my accounts",
+                        "line": 33,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:226"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "transfer money from one to another",
+                        "line": 33,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:231"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I have a saving account with a balance of 10000",
+                        "line": 33,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:35"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "the monthly interest 5 is calculated",
+                        "line": 33,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:171"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should have 17958,55 at end of year",
+                        "line": 33,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:213"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "transferring-money-between-accounts;multiple-transaction",
+                "keyword": "Scenario",
+                "name": "Multiple transaction",
+                "description": "",
+                "line": 35,
+                "type": "scenario",
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I want to manage my accounts",
+                        "line": 7,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:226"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "transfer money from one to another",
+                        "line": 8,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:231"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "my Current account has a balance of 1000.00",
+                        "line": 36,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:30"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "my Savings account has a balance of 2000.00",
+                        "line": 37,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:35"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 996600
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I perform \u003caction\u003e with \u003camount\u003e",
+                        "line": 38,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:236"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 2002200
+                        },
+                        "rows": [
+                            {
+                                "cells": [
+                                    "action",
+                                    "amount"
+                                ]
+                            },
+                            {
+                                "cells": [
+                                    "transfer",
+                                    "100"
+                                ]
+                            },
+                            {
+                                "cells": [
+                                    "deposit",
+                                    "1000"
+                                ]
+                            },
+                            {
+                                "cells": [
+                                    "deposit",
+                                    "500"
+                                ]
+                            },
+                            {
+                                "cells": [
+                                    "transfer",
+                                    "1000"
+                                ]
+                            },
+                            {
+                                "cells": [
+                                    "transfer",
+                                    "10000"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "I should have 1400.00 in my Current account",
+                        "line": 45,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:113"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I should have 3100.00 in my Savings account",
+                        "line": 46,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:139"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 999000
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "transferring-money-between-accounts;scenario-to-hard-to-automate",
+                "keyword": "Scenario",
+                "name": "Scenario to hard to automate",
+                "description": "",
+                "line": 49,
+                "type": "scenario",
+                "tags": [
+                    {
+                        "name": "@manual",
+                        "line": 48
+                    }
+                ],
+                "steps": [
+                    {
+                        "keyword": "Given ",
+                        "name": "I want to manage my accounts",
+                        "line": 7,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:226"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "transfer money from one to another",
+                        "line": 8,
+                        "match": {
+                            "location": "S_100_bank_acc_test.go:231"
+                        },
+                        "result": {
+                            "status": "passed",
+                            "duration": 0
+                        }
+                    },
+                    {
+                        "keyword": "Given ",
+                        "name": "I have a scenario hard to automate",
+                        "line": 50,
+                        "match": {
+                            "location": "S_100_bank_acc.feature:50"
+                        },
+                        "result": {
+                            "status": "undefined"
+                        }
+                    },
+                    {
+                        "keyword": "And ",
+                        "name": "I am too lazy",
+                        "line": 51,
+                        "match": {
+                            "location": "S_100_bank_acc.feature:51"
+                        },
+                        "result": {
+                            "status": "undefined"
+                        }
+                    },
+                    {
+                        "keyword": "When ",
+                        "name": "I put manual tag",
+                        "line": 52,
+                        "match": {
+                            "location": "S_100_bank_acc.feature:52"
+                        },
+                        "result": {
+                            "status": "undefined"
+                        }
+                    },
+                    {
+                        "keyword": "Then ",
+                        "name": "scenario will be skipped when running tests from this feature file",
+                        "line": 53,
+                        "match": {
+                            "location": "S_100_bank_acc.feature:53"
+                        },
+                        "result": {
+                            "status": "undefined"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]
