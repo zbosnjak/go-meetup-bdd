@@ -2,11 +2,27 @@ Go-meetup-bdd
 ========
 Small app for managing bank accounts. 
 
+# App Runner
 
+### Build the app:
 
+       for windows:
+          $  make build GOOS=windows    
+       for linux:
+          $  make build GOOS=linux    
+       for mac (default):
+          $  make build GOOS=darwin    
+          
+### Run the app:
+
+       using default port 9099:
+          $  ./bank_acc    
+       using specific port:
+          $  ./bank_acc rest_port=9090    
+
+NOTE: If app is not started at '127.0.0.1:9099', to successfully run tests change env variable in 'assets/envs/test'. 
+      
 # Test Runner
-
-## Examples
 
 ### Run the full suite:
 
@@ -24,7 +40,7 @@ Small app for managing bank accounts.
         $  make tests-run FULL_REPORT=1
 
      for one feature:
-        $  make tests-run REPORT=S-03581_login
+        $  make tests-run REPORT=S_100_bank_acc
 
 
 ### Compile results into an html report:
