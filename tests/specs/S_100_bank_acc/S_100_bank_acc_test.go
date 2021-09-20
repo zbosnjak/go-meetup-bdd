@@ -2,10 +2,10 @@ package test
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/DATA-DOG/godog"
-	"github.com/DATA-DOG/godog/gherkin"
+	"github.com/cucumber/godog"
 	"github.com/kelseyhightower/envconfig"
 	"github.com/zbosnjak/go-meetup-bdd/internal/rest"
 	"io/ioutil"
@@ -233,7 +233,7 @@ func transferMoneyFromOneToAnother() error {
 	return nil
 }
 
-func (h *testState) iPerformActionWithAmount(arg1 *gherkin.DataTable) error {
+func (h *testState) iPerformActionWithAmount(arg1 *godog.Table) error {
 	// index starts from 1, row 0 are headers
 	for index := 1; index < len(arg1.Rows); index++ {
 		row := arg1.Rows[index]
@@ -272,6 +272,7 @@ func (h *testState) iPerformActionWithAmount(arg1 *gherkin.DataTable) error {
 		}
 		if response.StatusCode == http.StatusOK {
 			fmt.Println("successful action")
+
 		} else {
 			body, err := ioutil.ReadAll(response.Body)
 			if err != nil {
@@ -283,39 +284,46 @@ func (h *testState) iPerformActionWithAmount(arg1 *gherkin.DataTable) error {
 	return nil
 }
 
-func FeatureContext(s *godog.Suite) {
+func BeforeScenarioFunc(ctx context.Context, sc *godog.Scenario) (context.Context, error) {
+	fmt.Println("Before scenario func")
+	return ctx, nil
+}
+
+func AfterScenarioFunc(ctx context.Context, sc *godog.Scenario, err error) (context.Context, error) {
+
+	if err != nil {
+		fmt.Println("After scenario func error received")
+	}
+	fmt.Println("After scenario func")
+	return ctx, nil
+}
+
+func InitializeScenario(ctx *godog.ScenarioContext) {
 	envconfig.Process("", &config)
 	//
 	holder := testState{
 		appAddress: config.AppAddress,
 		httpClient: http.Client{},
 	}
-	//TODO
-	//s.AfterSuite(func() {
-	//	fmt.Println("AfterSuite")
-	//})
-	//s.BeforeScenario(func(interface{}) {
-	//	fmt.Println("BeforeScenario")
-	//})
-	//
-	//s.AfterScenario(func(interface{}, error) {
-	//	fmt.Println("AfterScenario")
-	//})
 
-	s.Step(`^my Current account has a balance of (\d+)\.(\d+)$`, holder.myCurrentAccountHasABalanceOf)
-	s.Step(`^my Savings account has a balance of (\d+)\.(\d+)$`, holder.mySavingsAccountHasABalanceOf)
-	s.Step(`^I transfer (\d+)\.(\d+) from my Current account to my Savings account$`, holder.iTransferFromMyCurrentAccountToMySavingsAccount)
-	s.Step(`^I should have (\d+)\.(\d+) in my Current account$`, holder.iShouldHaveInMyCurrentAccount)
-	s.Step(`^I should have (\d+)\.(\d+) in my Savings account$`, holder.iShouldHaveInMySavingsAccount)
-	s.Step(`^I should receive an "([^"]*)" error$`, holder.iShouldReceiveAnError)
+	ctx.Before(BeforeScenarioFunc)
 
-	s.Step(`^I have a saving account with a balance of (\d+)$`, holder.mySavingsAccountHasABalanceOf)
-	s.Step(`^the monthly interest (\d+) is calculated$`, holder.itheMonthlyInterestIsCalculated)
-	s.Step(`^I should have (\d+),(\d+) at end of year$`, holder.iShouldHaveAtEndOfYear)
+	ctx.After(AfterScenarioFunc)
 
-	s.Step(`^I perform <action> with <amount>$`, holder.iPerformActionWithAmount)
+	ctx.Step(`^my Current account has a balance of (\d+)\.(\d+)$`, holder.myCurrentAccountHasABalanceOf)
+	ctx.Step(`^my Savings account has a balance of (\d+)\.(\d+)$`, holder.mySavingsAccountHasABalanceOf)
+	ctx.Step(`^I transfer (\d+)\.(\d+) from my Current account to my Savings account$`, holder.iTransferFromMyCurrentAccountToMySavingsAccount)
+	ctx.Step(`^I should have (\d+)\.(\d+) in my Current account$`, holder.iShouldHaveInMyCurrentAccount)
+	ctx.Step(`^I should have (\d+)\.(\d+) in my Savings account$`, holder.iShouldHaveInMySavingsAccount)
+	ctx.Step(`^I should receive an "([^"]*)" error$`, holder.iShouldReceiveAnError)
 
-	s.Step(`^I want to manage my accounts$`, iWantToManageMyAccounts)
-	s.Step(`^transfer money from one to another$`, transferMoneyFromOneToAnother)
+	ctx.Step(`^I have a saving account with a balance of (\d+)$`, holder.mySavingsAccountHasABalanceOf)
+	ctx.Step(`^the monthly interest (\d+) is calculated$`, holder.itheMonthlyInterestIsCalculated)
+	ctx.Step(`^I should have (\d+),(\d+) at end of year$`, holder.iShouldHaveAtEndOfYear)
+
+	ctx.Step(`^I perform <action> with <amount>$`, holder.iPerformActionWithAmount)
+
+	ctx.Step(`^I want to manage my accounts$`, iWantToManageMyAccounts)
+	ctx.Step(`^transfer money from one to another$`, transferMoneyFromOneToAnother)
 
 }

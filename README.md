@@ -1,6 +1,6 @@
 Go-meetup-bdd
 ========
-Small app for managing bank accounts. 
+Small app for managing bank accounts with BDD tests. 
 
 # App Runner
 
@@ -26,7 +26,7 @@ NOTE: If app is not started at '127.0.0.1:9099', to successfully run tests chang
 
 ### Run the full suite:
 
-       for one feature:
+       all features:
           $  make tests-run 
 
 ### Test one feature:

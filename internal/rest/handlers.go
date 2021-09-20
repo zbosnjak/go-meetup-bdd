@@ -61,7 +61,7 @@ func SetBankAccHandler(accounts *AccHandler) func(w http.ResponseWriter, r *http
 		body, err := ioutil.ReadAll(r.Body)
 		if err != nil {
 			msg := fmt.Sprintf("Error reading body: %v\n", err)
-			fmt.Printf(msg)
+			fmt.Println(msg)
 			http.Error(w, msg, http.StatusBadRequest)
 			return
 		}
@@ -69,7 +69,7 @@ func SetBankAccHandler(accounts *AccHandler) func(w http.ResponseWriter, r *http
 		err = json.Unmarshal(body, &acc)
 		if err != nil {
 			msg := fmt.Sprintf("Error reading body: %v\n", err)
-			fmt.Printf(msg)
+			fmt.Println(msg)
 			http.Error(w, msg, http.StatusBadRequest)
 			return
 		}
@@ -103,7 +103,7 @@ func UpdateBankAccHandler(accounts *AccHandler) func(w http.ResponseWriter, r *h
 		body, err := ioutil.ReadAll(r.Body)
 		if err != nil {
 			msg := fmt.Sprintf("Error reading body: %v\n", err)
-			fmt.Printf(msg)
+			fmt.Println(msg)
 			http.Error(w, msg, http.StatusBadRequest)
 			return
 		}
@@ -111,7 +111,7 @@ func UpdateBankAccHandler(accounts *AccHandler) func(w http.ResponseWriter, r *h
 		err = json.Unmarshal(body, &acc)
 		if err != nil {
 			msg := fmt.Sprintf("Error reading body: %v\n", err)
-			fmt.Printf(msg)
+			fmt.Println(msg)
 			http.Error(w, msg, http.StatusBadRequest)
 			return
 		}
@@ -158,7 +158,7 @@ func CalculateBalanceWithInterestRateHandler(accounts *AccHandler) func(w http.R
 		body, err := ioutil.ReadAll(r.Body)
 		if err != nil {
 			msg := fmt.Sprintf("Error reading body: %v\n", err)
-			fmt.Printf(msg)
+			fmt.Println(msg)
 			http.Error(w, msg, http.StatusBadRequest)
 			return
 		}
@@ -166,7 +166,7 @@ func CalculateBalanceWithInterestRateHandler(accounts *AccHandler) func(w http.R
 		err = json.Unmarshal(body, &rate)
 		if err != nil {
 			msg := fmt.Sprintf("Error reading body: %v\n", err)
-			fmt.Printf(msg)
+			fmt.Println(msg)
 			http.Error(w, msg, http.StatusBadRequest)
 			return
 		}
